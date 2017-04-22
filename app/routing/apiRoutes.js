@@ -21,19 +21,15 @@ module.exports = function(app) {
           sum += Math.abs(Number(friends[i].scores[j]) - Number(req.body.scores[j]));
         }
         prevFriend = sum;
-        console.log("prevFriend: " + prevFriend + " | currentFriend: " + currentFriend);
         if (prevFriend < currentFriend && !check) {
           currentFriend = prevFriend;
           index = i;
-          console.log("NEW prevFriend: " + prevFriend + " | currentFriend: " + currentFriend + " | index: " + index);
         }
       }
-      console.log("Right here: " + JSON.stringify(friends[index]));
       currentFriend = 1000;
       res.json(friends[index]);
     } else {
       res.json(friends[0]);
-      console.log("Right here2: " + JSON.stringify(friends[index]));
       currentFriend = 1000;
       check = false;
     }
